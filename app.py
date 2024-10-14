@@ -12,8 +12,8 @@ mongodb_url = os.getenv('MONGODBURL')
 
 # Connect to MongoDB database
 client = MongoClient(mongodb_url)
-db = client['Penny']
-collection = db['Penny']
+db = client['Your_DB']
+collection = db['Your_Collection']
 
 
 # Home page with two buttons and list of employees
