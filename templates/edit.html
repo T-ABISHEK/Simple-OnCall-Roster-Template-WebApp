@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Employee</title>
+    <!-- include the style sheet -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- the main content section of the page -->
+    <div id="content">
+        <h1>Edit Employee</h1>
+        <!-- form to edit employee information -->
+        <form method="POST" action="{{ url_for('edit', id=employee['_id']) }}">
+            <label>Name:</label><br>
+            <input type="text" name="name" value="{{ employee['name'] }}"><br>
+            <label>Email:</label><br>
+            <input type="email" name="email" value="{{ employee['email'] }}"><br>
+            <label>Team:</label><br>
+            <input type="text" name="team" value="{{ employee['team'] }}"><br>
+            <label>Role:</label><br>
+            <input type="text" name="role" value="{{ employee['role'] }}"><br>
+            <label>Start Date:</label><br>
+            <input type="date" name="start_date" value="{{ employee['start_date'] }}"><br>
+            <label>End Date:</label><br>
+            <input type="date" name="end_date" value="{{ employee['end_date'] }}"><br><br>
+            <!-- submit button to save the changes -->
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

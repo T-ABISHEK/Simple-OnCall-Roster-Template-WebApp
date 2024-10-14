@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>On-Call Roster</title>
+    <!-- include the style sheet -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- the header section of the page -->
+    <div id="header">
+        <h1>On-Call Roster</h1>
+        <div>
+            <!-- link to the home page -->
+            <a href="{{ url_for('home') }}">Home</a>
+            <!-- link to create a new user -->
+            <a href="{{ url_for('create') }}">Add User</a>
+        </div>
+    </div>
+    <!-- the main content section of the page -->
+    <div id="content">
+        <h2 id="team">Team</h2>
+        <!-- buttons to select different teams -->
+        <div class="team-buttons">
+            <button>SRE PAYMENTS</button>
+            <button>SRE UPI</button>
+            <button>SRE PLATFORM</button>
+            <button>NETOPS</button>
+            <button>CORE INFRA</button>
+        </div>
+        <!-- table to display employee roster -->
+        <table>
+            <!-- table headers -->
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Team</th>
+                <th>Role</th>
+                <th>From Date</th>
+                <th>To Date</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <!-- loop over employees and display their information in the table -->
+            {% for employee in employees %}
+            <tr>
+                <td>{{ employee['name'] }}</td>
+                <td>{{ employee['email'] }}</td>
+                <td>{{ employee['team'] }}</td>
+                <td>{{ employee['role'] }}</td>
+                <td>{{ employee['start_date'] }}</td>
+                <td>{{ employee['end_date'] }}</td>
+                <!-- link to the edit page for this employee -->
+                <td><a href="{{ url_for('edit', id=employee['_id']) }}">Edit</a></td>
+                <!-- link to delete this employee with a confirmation prompt -->
+                <td><a href="{{ url_for('delete', id=employee['_id']) }}" onclick="return confirm('Are you sure you want to delete this employee?')">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
